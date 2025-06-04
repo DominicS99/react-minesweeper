@@ -1,9 +1,11 @@
 import "./App.css";
 import useAppState from "./useAppState";
+import useLoadBoard from "./useLoadBoard";
 
 function App() {
   const [state, dispatch] = useAppState();
 
+  useLoadBoard(5, dispatch);
   return (
     <div className="App">
       <header className="App-header">
