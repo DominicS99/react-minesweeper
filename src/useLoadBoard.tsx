@@ -2,11 +2,12 @@ import { useEffect, Dispatch } from "react";
 import { Board } from "./Board";
 import { Action } from "./useAppState";
 
+const MINE_FREQ = 0.2; // Frequency of mines in the board
+
 // Function to create a new board with mines and display cells
-// Total mines are 20% of the total cells
 function createBoard(size: number): Board {
   const totCells = size * size;
-  const totMines = Math.floor(totCells * 0.2);
+  const totMines = Math.floor(totCells * MINE_FREQ);
   const boardHidden: boolean[][] = Array.from({ length: size }, () =>
     Array(size).fill(false),
   );
@@ -28,12 +29,10 @@ function createBoard(size: number): Board {
     boardHidden[row][col] = true;
   });
 
-  const res: Board = {
+  return {
     mines: boardHidden,
     display: boardDisplay,
   };
-
-  return res;
 }
 
 export default function useLoadBoard(size: number, dispatch: Dispatch<Action>) {
@@ -42,5 +41,5 @@ export default function useLoadBoard(size: number, dispatch: Dispatch<Action>) {
       type: "load-board",
       board: createBoard(size),
     });
-  }, [size, dispatch]);
+  }, [dispatch]);
 }
