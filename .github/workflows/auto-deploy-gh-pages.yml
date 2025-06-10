@@ -29,10 +29,6 @@ jobs:
     # update or remove the line below.
     if: github.repository == 'DominicS99/react-minesweeper'
 
-    environment:
-      name: auto-deploy-gh-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
 
     steps:
