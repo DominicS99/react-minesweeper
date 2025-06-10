@@ -2,7 +2,7 @@ import { useEffect, Dispatch } from "react";
 import { Board } from "./Board";
 import { Action } from "./useAppState";
 
-const MINE_FREQ = 0.2; // Frequency of mines in the board
+const MINE_FREQ = 0.25; // Frequency of mines in the board
 
 // Function to create a new board with mines and display cells
 function createBoard(size: number): Board {
@@ -41,5 +41,5 @@ export default function useLoadBoard(size: number, dispatch: Dispatch<Action>) {
       type: "load-board",
       board: createBoard(size),
     });
-  }, [dispatch]);
+  }, [size, dispatch]);
 }
