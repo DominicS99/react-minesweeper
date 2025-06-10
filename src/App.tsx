@@ -29,7 +29,7 @@ function App() {
                 state.board.display.map((row: number[], rowIdx: number) => (
                   <div key={rowIdx} className="board-row">
                     {row.map((cell: number, colIdx: number) => (
-                      <div
+                      <button
                         key={colIdx}
                         className={
                           "board-cell" +
@@ -47,7 +47,7 @@ function App() {
                         }}
                       >
                         {cell === -1 ? "" : cell}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 ))}

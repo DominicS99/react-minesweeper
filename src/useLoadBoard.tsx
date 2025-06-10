@@ -41,5 +41,5 @@ export default function useLoadBoard(size: number, dispatch: Dispatch<Action>) {
       type: "load-board",
       board: createBoard(size),
     });
-  }, [dispatch]);
+  }, [size, dispatch]);
 }

@@ -31,20 +31,22 @@ export type Action =
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case "start-game":
+    case "start-game": {
       if (state.board === null) return state;
       return {
         ...state,
         phase: "in-game",
         board: state.board,
       };
-    case "load-board":
+    }
+    case "load-board": {
       return {
         ...state,
         board: action.board,
       };
-    case "reveal-cell":
-      if (state.phase !== "in-game" || !state.board) return state; // Confirm phase and board exists
+    }
+    case "reveal-cell": {
+      if (state.phase !== "in-game") return state; // Confirm phase and board exists
       const { row, col } = action;
       if (state.board.display[row][col] !== -1) return state; // Do nothing if already checked
 
@@ -83,9 +85,10 @@ function reducer(state: State, action: Action): State {
           display: newDisplay,
         },
       };
-
-    default:
+    }
+    default: {
       throw new Error(`Unknown action: ${action}`);
+    }
   }
 }
 
